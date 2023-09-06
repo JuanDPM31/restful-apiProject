@@ -27,9 +27,9 @@ const createArticle = async (req,res) => {
 }
 const updateArticle = async (req,res)=>{
     let id = req.params.ArticleId;
-    let {title,content,UserId} = req.body;
+    let {name} = req.body;
     try {
-        const updateArticle = await Articleservice.updateArticle(id,title,content,UserId);
+        const updateArticle = await Articleservice.updateArticle(id,name);
         res.status(200).send({status:"OK", data:updateArticle})
     } catch (error) {
         res.status(error.status || 500).send({status: 'FAILED', data:{error: error.message}});

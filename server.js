@@ -17,7 +17,7 @@ app.use('/api/v1/users', require('./api/v1/routes/user.routes'));
 app.use('/api/v1/articles', require('./api/v1/routes/articles.routes'));
 app.use('/api/v1/category', require('./api/v1/routes/category.routes'));
 app.get('/api/v1/test',(req,res)=>{
-    res.send('HOLA PUTAS !!!!!!!!!!!!!')
+    res.send('HOLA ADSO !!!!!!!!!!!!!')
 })
 //app.get('/',(req,res)=>{
 //    console.log("ruta ppal");

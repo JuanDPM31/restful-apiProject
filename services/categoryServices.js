@@ -1,59 +1,65 @@
-const db = require('../models');
-const category = require('../models/category');
-const getAllCategory = async () =>{
+const db = require('../models')
+
+const getAllCategories = async()=>{
     try {
-        let Categorys = await db.Category.findAll();
-        return Categorys;
+        let Categories = await db.Category.findAll({   
+        })
+        return Categories;
     } catch (error) {
-        throw {status:500, message: error.message || 'Failed to get Articles'}
-    }
-};
-const getCategory = async (id) => {
-    try {
-        let Article = await db.Article.findByPk(id);
-        return Article
-    } catch (error) {
-        throw {status:500, message: error.message || 'Failed to get Article'}
+        return error.message || "Failed to get the categories"
     }
 }
+
+const getCategory = async (id) =>{
+    try {
+        let Category = await db.Category.findByPk(id)
+        return Category;
+    } catch (error) {
+        throw {status:500, message: error.message || "Failed to get the Category"}
+    }
+}
+
 const createCategory = async (name) =>{
     try {
-        let newArticle = await  db.Article.create({
+        let newCategory = await db.Category.create({
             name
         });
-        return newArticle
+        return  newCategory;
     } catch (error) {
-        throw {status:500, message: error.message || 'Article could not be created'}
+        return error.message || "Category could not be created"
     }
-};
-const updateCategory= async (id,name) => {
+}
+const updateCategory = async (id,name) =>{
     try {
-        let updateArticle = await db.Article.update({
+        let updatedCategory = await db.Category.update({
             name
-        },{
+        },
+        {
+            where: {
+                id,
+            }
+        }
+        );
+        return updatedCategory;
+    } catch (error) {
+        return error.message || "Category could not be updated"
+    }
+}
+
+const deleteCategory = async (id) => {
+    try {
+        const deletedCategory = await db.Category.destroy({
             where:{
                 id,
             }
-        });
-        return updateArticle
+        })
+        return deletedCategory;
     } catch (error) {
-        throw {status:500, message: error.message || 'Article could not be updated'}
+        return error.message || "Category could not be deleted"
     }
-};
-const deleteCategory = async(id) =>{
-    try {
-        const deletedArticle = await db.Article.destroy({
-            where:{
-                id,
-            }
-        });
-        return deletedArticle;
-    } catch (error) {
-        throw {status:500, message: error.message || 'Article could not be deleted'}
-    }
-};
+}
 module.exports = {
-    getAllCategory,
+    getAllCategories,
     getCategory,
     createCategory,
     updateCategory,
