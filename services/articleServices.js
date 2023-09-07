@@ -65,7 +65,7 @@ const deleteArticle = async(id) =>{
                 id,
             }
         });
-        return deleteArticle;
+        return deletedArticle;
     } catch (error) {
         throw {status:500, message: error.message || 'Article could not be deleted'}
     }
