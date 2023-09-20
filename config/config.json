@@ -24,7 +24,7 @@
     "username": "db_api_rest_gky2_user",
     "password": "qJqGWvt0HXwE6qN9aU5nOe5lR3AvlwCy",
     "database": "db_api_rest_gky2",
-    "host": "oregon-postgres.render.com/db_api_rest_gky2",
+    "host": "oregon-postgres.render.com",
     "dialect": "postgres",
     "dialectOptions":{
       "ssl":{
