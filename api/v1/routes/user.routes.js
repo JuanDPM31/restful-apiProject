@@ -1,4 +1,6 @@
 const {Router} = require('express')
+const cors = require('cors')
+app.use(cors())
 const userController = require ('../../../controllers/userController')
 const router  = Router()
 router.get('/', userController.getAllUsers);
