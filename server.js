@@ -2,6 +2,7 @@ const express = require('express')// Para incluir el framework
 const app = express(); //Instancoa deñ framework Express
 const bodyParse = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
 //Validamos eu no estemos en el ambiente de produccion
 if(process.env.NODE_ENV != 'production'){
     // se carga la configuracion de archivo .env al process.env
@@ -13,6 +14,7 @@ app.set('port', process.env.PORT || 4000)
 app.use(bodyParse.urlencoded({extended:false}))//Recibir datos formulario sencillos
 app.use(bodyParse.json())//Para recibir json
 app.use(morgan('dev'))
+app.use(cors())
 app.use('/api/v1/users', require('./api/v1/routes/user.routes'));
 app.use('/api/v1/articles', require('./api/v1/routes/articles.routes'));
 app.use('/api/v1/category', require('./api/v1/routes/category.routes'));
