@@ -35,8 +35,7 @@ const updateUser = async (id,name,email,password) =>{
                 id,
             }
         })
-        let users = await db.User.findAll()
-        return users
+        return updateUser
     } catch (error) {
         throw {status:500, message: error.message || 'User could not be updated'}
     }
